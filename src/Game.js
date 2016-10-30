@@ -1,7 +1,7 @@
 import Paddle from './Paddle';
 import Ball from './Ball';
 import ScoreBoard from './Score';
-import {p1Keys, p2Keys} from './Keys';
+import {p1Keys, p2Keys, Start} from './Keys';
 
 export default class Game {
 
@@ -18,7 +18,7 @@ export default class Game {
     this.p2 = new Paddle(this.height, this.width - 4 - 10, 'white', p2Keys);
     this.p1Score = new ScoreBoard(225, 85);
     this.p2Score = new ScoreBoard(75, 85);
-    this.ball = new Ball();
+    this.ball = new Ball(Start);
 	}
 
 	//This will make a dashed draw line

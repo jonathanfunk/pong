@@ -1,9 +1,15 @@
 export const p1Keys = {
-  up: 65,
-  down: 90,
+  up: 65, //A key
+  down: 90,//Z key
+  shoot: 81, //Q key
 }
 
 export const p2Keys = {
-  up: 38,
-  down: 40,
+  up: 38,//Up key
+  down: 40,//Down key
+  shoot: 191,// / key
+}
+
+export const Start = {
+  go: 84,//T key
 }
