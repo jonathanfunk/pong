@@ -26,22 +26,25 @@ export default class Ball {
     this.go();
   }
 
-    keyListener(event){
-      switch (event.keyCode) {
-        case this.start.go:
-        gameStart = true;
-        console.log(gameStart);
-        break;
-        default: return;
-      }
+  //This sets the gameStart variable to true which will then activate go()
+  keyListener(event){
+    switch (event.keyCode) {
+      case this.start.go:
+      gameStart = true;
+      break;
+      default: return;
     }
-
-  go(){
-    if(gameStart){
-      console.log(gameStart)
-    this.x += this.vx;
-    this.y += this.vy;
   }
+
+  //This calls for the start of the game if gameStart is true
+  go(){
+    if(gameStart === true){
+      this.x += this.vx;
+      this.y += this.vy;
+    } else if (gameStart === false){
+      this.x = 150;
+      this.y = 75;
+    }
   }
 
   //This makes the ball start
@@ -61,33 +64,45 @@ export default class Ball {
     }
   }
 
-  //This will reset the ball
-  reset(){
+  //This will add score & reset the ball
+  reset(player){
     this.x = 150;
     this.y = 75;
     this.vx *= -1;
+    player.score++
+  }
+
+  //This will reset the scores for both teams to 0 after game over
+  again(p1Score, p2Score){
+    gameStart = false;
+    p1Score.score = 0;
+    p2Score.score = 0;
   }
 
 
-  //This increments the score and calls for the reset function
+  //This calls for the score increment/reset function after conditions are made
   score(p1, p2, p1Score, p2Score){
-    if(this.x <= 0 + this.radius){
-      this.reset(p2);
-      p1Score.score++;
-    } else if (this.x >= game.width){
-      this.reset(p1);
-      p2Score.score++;
+    if(this.x >= game.width){
+      this.reset(p1Score);
+      if(p1Score.score === 10){
+      this.again(p1Score, p2Score);
+      }
+    } else if (this.x <= 0 + this.radius){
+      this.reset(p2Score);
+      if(p2Score.score === 10){
+        this.again(p1Score, p2Score);
+      }
     }
   }
 
   //This makes the ball bounce off the paddles
   paddleCollision(p1, p2) {
     if (this.vx > 0) {
-      const inRightEnd = p2.x <= this.x + this.radius &&
-      p2.x > this.x - this.vx + this.radius;
+      const inRightEnd = p2.x <= this.x + this.size &&
+      p2.x > this.x - this.vx + this.size;
 
       if (inRightEnd) {
-        const collisionDiff = this.x + this.radius - p2.x;
+        const collisionDiff = this.x + this.size - p2.x;
         const k = collisionDiff / this.vx;
         const y = this.vy * k + (this.y - this.vy);
         const hitRightPaddle = y >= p2.y && y + this.radius <=

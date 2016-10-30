@@ -15,9 +15,9 @@ export default class Game {
 
     //Instances of ball, player 1, player 2 and their keys are created here
     this.p1 = new Paddle(this.height, 10, 'red', p1Keys);
-    this.p2 = new Paddle(this.height, this.width - 4 - 10, 'white', p2Keys);
-    this.p1Score = new ScoreBoard(225, 85);
-    this.p2Score = new ScoreBoard(75, 85);
+    this.p2 = new Paddle(this.height, this.width - 4 - 10, 'grey', p2Keys);
+    this.p1Score = new ScoreBoard(72);
+    this.p2Score = new ScoreBoard(225);
     this.ball = new Ball(Start);
 	}
 
