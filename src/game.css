@@ -64,6 +64,15 @@ body {
    font-family: 'PressStart2P Web', monospace;
    margin: 0 auto;
    text-align: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   align-content: center;
+   height: 100vh;
+}
+
+section {
+  background-color: white;
 }
 h1 {
    margin-top: 20px;

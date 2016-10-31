@@ -1,12 +1,14 @@
 const size = 5;
+const wav1 = new Audio('sounds/pong-01.wav');
+const wav2 = new Audio('sounds/pong-02.wav');
+const wav3 = new Audio('sounds/pong-03.wav');
 let gameStart = false;
-//const wav1 = new Audio('sounds/pong-01.wav');
-//const wav2 = new Audio('sounds/pong-02.wav');
+
 
 export default class Ball {
   constructor(start) {
-    this.x = 150; // random x
-    this.y = 75; // random y
+    this.x = 150;
+    this.y = 75;
     this.vy = Math.floor(Math.random() * 12 - 6); // y direction
     this.vx = (7 - Math.abs(this.vy)); // x direction
     this.size = size;
@@ -59,13 +61,14 @@ export default class Ball {
   //This makes the ball bounce once it hits the top/bottom of canvas
   bounce(){
     if(this.y <= 0 + this.radius|| this.y >= 150 - this.radius){
-      //wav1.play();
+      wav1.play();
       this.vy *= -1;
     }
   }
 
   //This will add score & reset the ball
   reset(player){
+    wav1.play();
     this.x = 150;
     this.y = 75;
     this.vx *= -1;
@@ -85,12 +88,14 @@ export default class Ball {
     if(this.x >= game.width){
       this.reset(p1Score);
       if(p1Score.score === 10){
-      this.again(p1Score, p2Score);
+        this.again(p1Score, p2Score);
+        alert("Player 1 wins!");
       }
     } else if (this.x <= 0 + this.radius){
       this.reset(p2Score);
       if(p2Score.score === 10){
         this.again(p1Score, p2Score);
+        alert("Player 2 wins!");
       }
     }
   }
@@ -108,7 +113,7 @@ export default class Ball {
         const hitRightPaddle = y >= p2.y && y + this.radius <=
         p2.y + p2.height;
         if (hitRightPaddle) {
-          //wav2.play();
+          wav2.play();
           this.x = p2.x - this.radius;
           this.y = Math.floor(this.y - this.vy + this.vy * k);
           this.vx = -this.vx;
@@ -123,7 +128,7 @@ export default class Ball {
         const hitLeftPaddle = y >= p1.y && y + (this.size - p1.width) - p1.width <=
         p1.y + p1.height;
         if (hitLeftPaddle) {
-          //wav2.play();
+          wav2.play();
           this.x = p1.x + p1.width;
           this.y = Math.floor(this.y - this.vy + this.vy * k);
           this.vx = -this.vx;

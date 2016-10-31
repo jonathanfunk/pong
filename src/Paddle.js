@@ -2,7 +2,7 @@ export default class Paddle {
   constructor(boardHeight, x, color, keys){
     this.width = 5;
     this.height = 50;
-    this.speed = 7;
+    this.speed = 10;
     this.boardHeight = boardHeight;
     this.x = x;
     this.y = (boardHeight / 2) - (this.height / 2);

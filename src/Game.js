@@ -2,10 +2,9 @@ import Paddle from './Paddle';
 import Ball from './Ball';
 import ScoreBoard from './Score';
 import {p1Keys, p2Keys, Start} from './Keys';
-
 export default class Game {
 
-	//This will make the canvas and bring in the paddle and balls
+	//This will construct the canvas and bring in the paddle and balls
 	constructor() {
 		const canvas = document.getElementById('game');
 		this.width = canvas.width;
@@ -14,8 +13,8 @@ export default class Game {
 		this.context.fillStyle = 'white';
 
     //Instances of ball, player 1, player 2 and their keys are created here
-    this.p1 = new Paddle(this.height, 10, 'red', p1Keys);
-    this.p2 = new Paddle(this.height, this.width - 4 - 10, 'grey', p2Keys);
+    this.p1 = new Paddle(this.height, 10, 'white', p1Keys);
+    this.p2 = new Paddle(this.height, this.width - 4 - 10, 'white', p2Keys);
     this.p1Score = new ScoreBoard(72);
     this.p2Score = new ScoreBoard(225);
     this.ball = new Ball(Start);
