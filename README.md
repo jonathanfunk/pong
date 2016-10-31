@@ -17,7 +17,7 @@ This project involved a lot of Javascript. Before I got started on this project,
 
 I developed Pong using ES2015 Javascript practices and HTML5 Canvas. This project was a bit tricky and it made me think on how to set this up logically. In the end, I came up with a functional Pong game.
 
-[Link](https://jonathanfunk.github.io/instanews/) to website.
+[Link](https://jonathanfunk.github.io/pong/) to website.
 
 ## Keys
 
