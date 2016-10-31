@@ -1,3 +1,11 @@
+const join = require('path').join;
+const PATHS = {
+	src: join(__dirname, 'src'),
+	fonts: join(__dirname, 'fonts'),
+	build: join(__dirname, 'build')
+};
+
+
 module.exports = {
    entry: "./src/index.js",
    devServer: {
@@ -10,10 +18,10 @@ module.exports = {
      }
    },
    output: {
-       path: __dirname,
-       filename: "./build/bundle.js",
-       publicPath: '/js/'
-   },
+		path: PATHS.build,
+		publicPath: '/pong/',
+		filename: 'bundle.js'
+	},
    module: {
        loaders: [
            {
