@@ -442,7 +442,9 @@ var Paddle = function () {
       return _this.keyDown(event);
     });
   }
-  ////////
+
+  //This controls the paddles when upPressed/downPressed is true
+
 
   _createClass(Paddle, [{
     key: 'movePaddle',
@@ -454,7 +456,7 @@ var Paddle = function () {
       }
     }
 
-    //This controls the paddles
+    //upPress/downPress values are true when keys are pressed down
 
   }, {
     key: 'keyUp',
@@ -472,6 +474,9 @@ var Paddle = function () {
           return;
       }
     }
+
+    //upPress/downPress values are false when keys are released
+
   }, {
     key: 'keyDown',
     value: function keyDown(event) {
@@ -488,8 +493,6 @@ var Paddle = function () {
           return;
       }
     }
-
-    /////////
 
     //This gives the paddle speed, direction and detects collision
 

@@ -16,8 +16,8 @@ export default class Paddle {
     document.addEventListener('keydown',event => this.keyUp(event))
     document.addEventListener('keyup',event => this.keyDown(event))
   }
-  ////////
 
+  //This controls the paddles when upPressed/downPressed is true
   movePaddle(){
     if (this.upPressed){
       this.moveUp();
@@ -26,7 +26,7 @@ export default class Paddle {
     }
   }
 
-  //This controls the paddles
+  //upPress/downPress values are true when keys are pressed down
   keyUp(event){
     switch (event.keyCode) {
       case this.keys.up:
@@ -41,6 +41,7 @@ export default class Paddle {
     }
   }
 
+  //upPress/downPress values are false when keys are released
   keyDown(event){
     switch (event.keyCode) {
       case this.keys.up:
@@ -54,8 +55,6 @@ export default class Paddle {
       default: return;
     }
   }
-
-  /////////
 
   //This gives the paddle speed, direction and detects collision
   moveUp(){
