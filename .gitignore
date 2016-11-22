@@ -11,3 +11,4 @@ ehthumbs.db
 node_modules/
 build/fonts
 build/*.json
+npm-debug-log

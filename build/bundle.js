@@ -416,6 +416,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var upPressed = false;
+var downPressed = false;
+
 var Paddle = function () {
   function Paddle(boardHeight, x, color, keys) {
     var _this = this;
@@ -430,28 +433,63 @@ var Paddle = function () {
     this.y = boardHeight / 2 - this.height / 2;
     this.color = color;
     this.keys = keys;
+    this.upPressed;
+    this.downPressed;
     document.addEventListener('keydown', function (event) {
-      return _this.keyListener(event);
+      return _this.keyUp(event);
+    });
+    document.addEventListener('keyup', function (event) {
+      return _this.keyDown(event);
     });
   }
-
-  //This controls the paddles
-
+  ////////
 
   _createClass(Paddle, [{
-    key: 'keyListener',
-    value: function keyListener(event) {
+    key: 'movePaddle',
+    value: function movePaddle() {
+      if (this.upPressed) {
+        this.moveUp();
+      }if (this.downPressed) {
+        this.moveDown();
+      }
+    }
+
+    //This controls the paddles
+
+  }, {
+    key: 'keyUp',
+    value: function keyUp(event) {
       switch (event.keyCode) {
         case this.keys.up:
-          this.moveUp();
+          this.upPressed = true;
+          console.log(this.upPressed);
           break;
         case this.keys.down:
-          this.moveDown();
+          this.downPressed = true;
+          console.log(this.downPressed);
           break;
         default:
           return;
       }
     }
+  }, {
+    key: 'keyDown',
+    value: function keyDown(event) {
+      switch (event.keyCode) {
+        case this.keys.up:
+          this.upPressed = false;
+          console.log(this.upPressed);
+          break;
+        case this.keys.down:
+          this.downPressed = false;
+          console.log(this.downPressed);
+          break;
+        default:
+          return;
+      }
+    }
+
+    /////////
 
     //This gives the paddle speed, direction and detects collision
 
@@ -477,6 +515,7 @@ var Paddle = function () {
     value: function render(context) {
       context.fillStyle = this.color;
       context.fillRect(this.x, this.y, this.width, this.height);
+      this.movePaddle();
     }
   }]);
 

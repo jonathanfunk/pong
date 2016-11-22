@@ -1,3 +1,6 @@
+let upPressed = false;
+let downPressed = false;
+
 export default class Paddle {
   constructor(boardHeight, x, color, keys){
     this.width = 5;
@@ -8,21 +11,51 @@ export default class Paddle {
     this.y = (boardHeight / 2) - (this.height / 2);
     this.color = color;
     this.keys = keys;
-    document.addEventListener('keydown',event => this.keyListener(event))
+    this.upPressed;
+    this.downPressed;
+    document.addEventListener('keydown',event => this.keyUp(event))
+    document.addEventListener('keyup',event => this.keyDown(event))
+  }
+  ////////
+
+  movePaddle(){
+    if (this.upPressed){
+      this.moveUp();
+    } if (this.downPressed){
+      this.moveDown();
+    }
   }
 
   //This controls the paddles
-  keyListener(event){
+  keyUp(event){
     switch (event.keyCode) {
       case this.keys.up:
-      this.moveUp();
+      this.upPressed = true;
+      console.log(this.upPressed);
       break;
       case this.keys.down:
-      this.moveDown();
+      this.downPressed = true;
+      console.log(this.downPressed);
       break;
       default: return;
     }
   }
+
+  keyDown(event){
+    switch (event.keyCode) {
+      case this.keys.up:
+      this.upPressed = false;
+      console.log(this.upPressed);
+      break;
+      case this.keys.down:
+      this.downPressed = false;
+      console.log(this.downPressed);
+      break;
+      default: return;
+    }
+  }
+
+  /////////
 
   //This gives the paddle speed, direction and detects collision
   moveUp(){
@@ -45,6 +78,7 @@ export default class Paddle {
       this.width,
       this.height
     );
+    this.movePaddle();
   }
 
 }
