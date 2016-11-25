@@ -1,5 +1,6 @@
 Pong
 ======
+![pong-browser-mockup](https://cloud.githubusercontent.com/assets/20465505/20635223/3af96b4c-b30f-11e6-89c4-2d68d7701a1b.jpg)
 
 ## Project
 The objective for this project is to recreate an old arcade game using HTML5 Canvas.
